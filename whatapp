@@ -1,0 +1,10 @@
+      String smsNumber = getLoginResponse().getConfig_data().getCustomercare_mobile();
+//            if (FullProductDetailActivity.this.whatsappInstalledOrNot(FullProductDetailActivity.this.pref.getString(commankey.SharingPackegName))) {
+            smsNumber = smsNumber.replace("+", "").replace(" ", "");
+            Intent sendIntent = new Intent("android.intent.action.MAIN");
+            sendIntent.setAction("android.intent.action.SEND");
+            sendIntent.putExtra("jid", smsNumber + "@s.whatsapp.net");
+            sendIntent.putExtra("android.intent.extra.TEXT", "I am interesting for this Catalog : " );
+            sendIntent.setPackage("com.whatsapp");
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
